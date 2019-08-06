@@ -52,7 +52,7 @@
   ```bash
   cd ~
   wget https://studygolang.com/dl/golang/go1.11.5.linux-amd64.tar.gz
-  tar -C usr/local -xzf go1.11.5.linux-amd64.tar.gz #解压安装包到/usr/local目录下
+  tar -C /usr/local -xzf go1.11.5.linux-amd64.tar.gz #解压安装包到/usr/local目录下
   ```
 
 - 打开`/etc/profile`文件
@@ -253,10 +253,10 @@
 
 ## 7. 运行 first-network 的例子
 
-- 将`fabric`目录下的`bin` 目录拷贝到`fabric-samples`目录下,按照下面模式，更改`bin`目录下面所以二进制文件权限
+- 将`fabric`目录下的`bin` 目录拷贝到`fabric-samples`目录下,按照下面模式，更改`bin`目录下面所有二进制文件权限
 
   ```bash
-  chmod 777 configtxgen #提升权限
+  chmod 775 configtxgen #提升权限
   ```
 
 - 启动和关闭网络
@@ -268,4 +268,3 @@
   ```
 
   
-
