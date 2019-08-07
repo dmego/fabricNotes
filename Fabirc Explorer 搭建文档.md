@@ -152,6 +152,7 @@
 - 下载源码并切换到`cii-badge`分支
 
   ```bash
+  cd /opt/gopath/src/github.com/hyperledger
   git clone https://github.com/hyperledger/blockchain-explorer.git
   cd blockchain-explorer
   git checkout cii-badge

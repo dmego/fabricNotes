@@ -66,8 +66,8 @@
   ```bash
   export  PATH=$PATH:/usr/local/go/bin
   export  GOROOT=/usr/local/go
-  export  GOPATH=$HOME/go
-  export  PATH=$PATH:$HOME/go/bin
+  export  GOPATH=/opt/gopath
+  export  PATH=$PATH:/opt/gopath/bin
   ```
 
 - `source /etc/profile` 使环境变量生效, 用`go version`验证一下`Go`是否安装成功
@@ -76,7 +76,7 @@
 
   ``` bash
   cd ~   
-  mkdir -p go/src/github.com/hyperledger/fabric
+  mkdir -p /opt/gopath/src/github.com/hyperledger/fabric
   ```
 
 ## 4. Docker 安装
@@ -212,7 +212,7 @@
 - 克隆源码
 
   ```bash
-  cd ~/go/src/github.com/hyperledger
+  cd /opt/gopath/src/github.com/hyperledger
   git clone https://github.com/hyperledger/fabric.git
   git checkout v1.4.2 #将版本切换到1.4.2
   ```
