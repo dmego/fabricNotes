@@ -79,7 +79,7 @@
   mkdir -p /opt/gopath/src/github.com/hyperledger/fabric
   ```
 
-## 4. Docker 安装
+## 4. Docker 安装(*号步骤可以不用操作)
 
 - 卸载旧版本`Docker`
 
@@ -224,40 +224,40 @@
   ./bootstrap.sh
   ```
 
-- 如果下载二进制文件非常慢，可以下载到本地，然后解压拷贝到`fabric`目录下面,下面是下载地址
+- 如果下载二进制文件非常慢，可以下载到本地，然后解压拷贝到`/opt/gopath/bin`目录下面或者是`/usr/local/bin`目录下面，下面是下载地址
 
   - [hyperledger-fabric-linux-amd64-1.4.2.tar.gz](https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric/hyperledger-fabric/linux-amd64-1.4.2/hyperledger-fabric-linux-amd64-1.4.2.tar.gz)
 
   - [hyperledger-fabric-ca-linux-amd64-1.4.2.tar.gz](https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric-ca/hyperledger-fabric-ca/linux-amd64-1.4.2/hyperledger-fabric-ca-linux-amd64-1.4.2.tar.gz)
 
-  - **注**：这样需要编辑`bootstrap.sh`注释掉最后调用的`binariesInstall`方法
+  - 检查`/opt/gopath/bin`目录下面（或者`/usr/local/bin`）之前拷贝过来的文件权限，如果没有可执行权限，按照下面模式，更改`bin`目录下面所有拷贝过来的二进制文件权限
 
+    ```bash
+    chmod 775 configtxgen #提升权限
+    ```
+  
+  - **注**：这样需要编辑`bootstrap.sh`注释掉最后调用的`binariesInstall`方法
+  
     ```bash
     #........
     #...........
     if [ "$BINARIES" == "true" ]; then
       echo
       echo "Installing Hyperledger Fabric binaries"
-      echo
+    echo
       # binariesInstall #---注释掉这里
-    fi
+  fi
     #...........
     #........
     ```
-
+  
   - 再次执行`bootstrap.sh`文件下载`docker`镜像
-
+  
     ```bash
     ./bootstrap.sh
     ```
 
 ## 7. 运行 first-network 的例子
-
-- 将`fabric`目录下的`bin` 目录拷贝到`fabric-samples`目录下,按照下面模式，更改`bin`目录下面所有二进制文件权限
-
-  ```bash
-  chmod 775 configtxgen #提升权限
-  ```
 
 - 启动和关闭网络
 
