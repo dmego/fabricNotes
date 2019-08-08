@@ -244,9 +244,9 @@
     if [ "$BINARIES" == "true" ]; then
       echo
       echo "Installing Hyperledger Fabric binaries"
-    echo
+      echo
       # binariesInstall #---注释掉这里
-  fi
+    fi
     #...........
     #........
     ```
