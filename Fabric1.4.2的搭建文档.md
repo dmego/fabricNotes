@@ -2,23 +2,23 @@
 
 ## 1. 下载CentOS 7 镜像
 
-- 下载地址：http://isoredirect.centos.org/centos/7/isos/x86_64/
-- 网易源镜像地址：http://mirrors.163.com/centos/7.6.1810/isos/x86_64/
+- 下载地址：<http://isoredirect.centos.org/centos/7/isos/x86_64/>
+- 网易源镜像地址：<http://mirrors.163.com/centos/7.6.1810/isos/x86_64/>
 
 ## 2. VMware 15 安装 CentOS Minimal
 
 - 安装完成之后如果`ifconfig`命令无法使用，使用命令`yum -y install net-tools` 安装即可
 
-  ### CentOS 换 yum 源
+### CentOS 换 yum 源
 
-  - 首先进入`/etc/yum.repos.d/`目录下，新建一个repo_bak目录，用于保存系统中原来的repo文件
+- 首先进入`/etc/yum.repos.d/`目录下，新建一个repo_bak目录，用于保存系统中原来的repo文件
   
     ```bash
     cd /etc/yum.repos.d/
     mkdir repo_bak
     mv *.repo repo_bak/
     ```
-    
+
   - 在CentOS中配置使用网易和阿里的开源镜像
   
     ```bash
@@ -31,7 +31,7 @@
      yum clean all     # 清除系统所有的yum缓存
      yum makecache     # 生成yum缓存
     ```
-    
+
   - 安装`git`、`pip`、`vim`、`wget`等
   
     ```bash
@@ -43,8 +43,6 @@
     pip install --upgrade pip
     ```
   
-    
-
 ## 3. 安装Go语言环境
 
 - 下载最新的GO安装包，具体的最新版本号可以从[Golang官网](https://golang.org/)上查看,如果被墙，可以去[Go语言中文网](https://studygolang.com/dl)下载
@@ -75,7 +73,7 @@
 - 创建`Go`工作目录
 
   ``` bash
-  cd ~   
+  cd ~
   mkdir -p /opt/gopath/src/github.com/hyperledger/fabric
   ```
 
@@ -125,11 +123,11 @@
     ```
   
   - (*)通过运行`hello-world` 映像验证是否正确安装了`Docker CE`
-    
+
     ```bash
     docker run hello-world
     ```
-    
+
   - 或者运行以下命令查看`Docker`版本信息
   
     ```bash
@@ -206,7 +204,6 @@
   npm config set disturl https://npm.taobao.org/dist --global
   ```
 
-
 ## 6. 下载Fabric源码，安装镜像
 
 - 克隆源码
@@ -266,5 +263,3 @@
   ./byfn.sh up # 启动网络
   ./byfn.sh down #关闭网络
   ```
-
-  

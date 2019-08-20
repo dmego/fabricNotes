@@ -15,7 +15,7 @@ Fabric CA 是 Fabric 的证书颁发管理机构，原来是 Fabric 内的 Membe
 
 下图说明了 Hyperledger Fabric CA 服务器如何搭配整个 Hyperledger Fabric 架构
 
-![](images\fabric-ca.png)
+![fabric-ca](images/fabric-ca.png)
 
 ## Fabric CA 服务端和客户端的安装
 
@@ -49,7 +49,7 @@ Fabric CA 是 Fabric 的证书颁发管理机构，原来是 Fabric 内的 Membe
 
   该命令会默认将`Fabric-CA`的`Server`和`Client`的二进制文件安装到`$GOPATH/bin/`目录下
 
-## fabric-ca-server 
+## fabric-ca-server
 
 我们使用`fabric-ca-server --help`命令就能查看 CA 服务端所支持的参数和命令，另外[官方文档](https://hyperledger-fabric-ca.readthedocs.io/en/latest/servercli.html)上也有介绍
 
@@ -77,7 +77,7 @@ Fabric CA 是 Fabric 的证书颁发管理机构，原来是 Fabric 内的 Membe
   - `fabric-ca-server-config.yaml`：默认的 CA 服务端配置文件
   - `fabric-ca-server.db`：默认存放数据的 Sqlite 数据库文件
   - `msp/keystore/`：该路径下有存放个人身份的私钥文件(_sk文件)，对应签名证书等
-    -  `..._sk`：个人身份的私钥文件
+    - `..._sk`：个人身份的私钥文件
     - `IssuerSecretKey`：`idemix`证书颁发者的秘钥文件
     - `IssuerRevocationPrivateKey`：``idemix`证书吊销者的秘钥文件
   - `IssuerPublicKey`：`idemix`证书颁发者的公钥文件
@@ -95,7 +95,7 @@ Fabric CA 是 Fabric 的证书颁发管理机构，原来是 Fabric 内的 Membe
 
 - 配置文件`fabric-ca-server-config.yaml`：在配置文件中可以配置端口、TLS、CA、注册管理、数据库、LDAP、证书的申请和签发、BCCSP(加密库)、中间 CA 的配置等
 
-## fabric-ca-client 
+## fabric-ca-client
 
 同样的，我们使用`fabric-ca-client --help`命令就能查看 CA 客户端所支持的参数和命令，另外[官方文档](https://hyperledger-fabric-ca.readthedocs.io/en/latest/clientcli.html)上也有介绍
 
@@ -119,8 +119,8 @@ Fabric CA 是 Fabric 的证书颁发管理机构，原来是 Fabric 内的 Membe
       │   └── localhost-7054.pem # CA 根证书
       ├── IssuerPublicKey # idemix 证书颁发者公钥
       ├── IssuerRevocationPublicKey # idemix 证书吊销者公钥
-      ├── keystore 
-      │   └── ......_sk # 秘钥 
+      ├── keystore
+      │   └── ......_sk # 秘钥
       ├── signcerts
       │   └── cert.pem # 客户端证书
       └── user
@@ -150,7 +150,7 @@ Fabric CA 是 Fabric 的证书颁发管理机构，原来是 Fabric 内的 Membe
 │       │       └── intermediateca.example.com-cert.pem
 │       │  
 │       ├── orderers # 存放该组织所有 orderer 节点的信息
-│       │   └── orderer.example.com # 第一个 orderer 节点的信息，包含代表其身份的msp证书文件和用于TLS连接的tls证书文件 
+│       │   └── orderer.example.com # 第一个 orderer 节点的信息，包含代表其身份的msp证书文件和用于TLS连接的tls证书文件
 │       │       ├── msp # 存放代表第一个 orderer 节点身份的 msp 证书文件
 │       │       │   ├── admincerts # 存放组织管理员的身份验证证书，Oderer节点将基于其来认证xxx管理员身份 ??
 │       │       │   │   └── Admin@example.com-cert.pem
@@ -179,7 +179,7 @@ Fabric CA 是 Fabric 的证书颁发管理机构，原来是 Fabric 内的 Membe
 │       │   └── tlsca.example.com-cert.pem # 证书
 │       └── users # 存放属于该组织的用户实体
 │           └── Admin@example.com # 组织管理员用户信息，包括其 msp 证书和 tls 证书
-│               ├── msp # 存放管理员用户的 msp 证书文件 
+│               ├── msp # 存放管理员用户的 msp 证书文件
 │               │   ├── admincerts # 存放组织管理员的身份验证证书，被组织(example.com)的根证书签名
 │               │   │   └── Admin@example.com-cert.pem
 │               │   ├── cacerts # 存放组织(example.com)的 CA 根证书
@@ -188,7 +188,7 @@ Fabric CA 是 Fabric 的证书颁发管理机构，原来是 Fabric 内的 Membe
 │               │   │   └── .........._sk
 │               │   ├── signcerts # 管理员用户的身份验证证书，这是该组织下所有实体 msp 文件中 admincerts 文件的来源
 │               │   │   └── Admin@example.com-cert.pem
-│               │   └── tlscacerts # 存放 TLS 连接用的身份证书， 既组织的 TLS CA 根证书 
+│               │   └── tlscacerts # 存放 TLS 连接用的身份证书， 既组织的 TLS CA 根证书
 │               │       └── tlsca.example.com-cert.pem
 │               └── tls
 │                   ├── ca.crt # 组织(example.com)的 tlsCA 根证书[ca.example.com-cert.pem]
@@ -227,26 +227,20 @@ NodeOUs:
     OrganizationalUnitIdentifier: peer # 与对等节点(peer)的x509证书中包含的OU匹配的值
 ```
 
-
-
 - ecdsa-with-SHA256 使用 SHA256 算法对内容先计算摘要，再应用签名算法对摘要进行签名
 - Orderer 节点管理员证书位于 `crypto-config/ordererOrganizations/example.com/msp/admincerts`。由 CA 颁发给 `Admin@example.com`
 - TLS 证书是自签名证书，与之前的 CA 证书没有关系。位于 `crypto-config/ordererOrganizations/example.com/msp/tlscacerts`
 - TLS 客户端证书是由 TLS CA 颁发给 `Admin@example.com` 的用于 TLS 连接的证书。位于 `crypto-config/ordererOrganizations/example.com/users/Admin@example.com/tls`
 
-#### 证书间的关系
+### 证书间的关系
 
 - 颜色相同的线条表示文件内容相同。
 - 红色箭头表示 CA 颁发证书给某个组织或个人
 
-![](images\crypto-config.png)
-
-
-
-
+![crypto-config](images/crypto-config.png)
 
 ## Fabric CA 的实践使用
 
 - [HyperLedger Fabric 1.4 生产环境使用ca生成msp和tls](https://www.cnblogs.com/llongst/p/9786024.html)
 - [超级账本HyperLedger：Fabric-CA的使用演示](https://www.lijiaocn.com/项目/2018/05/04/fabric-ca-example.html)
-- https://github.com/dmego/fabric-first-network
+- <https://github.com/dmego/fabric-first-network>

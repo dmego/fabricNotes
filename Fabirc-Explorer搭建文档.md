@@ -38,7 +38,7 @@
 
   ```bash
   wget https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz
-  tar -xvf node-v8.11.4-linux-x64.tar.xz 
+  tar -xvf node-v8.11.4-linux-x64.tar.xz
   ```
 
 - 建立软链接
@@ -137,7 +137,7 @@
   ```bash
   wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
   rpm -ivh epel-release-latest-7.noarch.rpm
-  yum repolist 
+  yum repolist
   ```
 
 - 安装
@@ -145,7 +145,6 @@
   ```bash
   yum install jq -y
   ```
-
 
 ## 6.下载配置 Hyperledger Explorer
 
@@ -180,24 +179,24 @@
 
   ```json
   {
-  	"persistence": "postgreSQL",
-  	"platforms": ["fabric"],
-  	"postgreSQL": {
-  		"host": "127.0.0.1",
-  		"port": "5432",
-  		"database": "fabricexplorer",
-  		"username": "postgres", 
-  		"passwd": "postgres"
-  	},
-  	"sync": {
-  		"type": "local",
-  		"platform": "fabric",
-  		"blocksSyncTime": "1"
-  	},
-  	"jwt": {
-  		"secret": "a secret phrase!!",
-  		"expiresIn": "2 days"
-  	}
+      "persistence": "postgreSQL",
+      "platforms": ["fabric"],
+      "postgreSQL": {
+      "host": "127.0.0.1",
+      "port": "5432",
+      "database": "fabricexplorer",
+      "username": "postgres",
+      "passwd": "postgres"
+    },
+    "sync": {
+      "type": "local",
+      "platform": "fabric",
+      "blocksSyncTime": "1"
+      },
+    "jwt": {
+      "secret": "a secret phrase!!",
+      "expiresIn": "2 days"
+      }
   }
   ```
 
@@ -212,13 +211,13 @@
 
     ```bash
     {
-    	"network-configs": {
-    		"my-network": {
-    			"name": "my-network",
-    			"profile": "./connection-profile/my-network.json"
-    		}
-    	},
-    	"license": "Apache-2.0"
+        "network-configs": {
+            "my-network": {
+                "name": "my-network",
+                "profile": "./connection-profile/my-network.json"
+            }
+        },
+        "license": "Apache-2.0"
     }
     ```
 
@@ -232,64 +231,64 @@
 
     ```bash
     {
-    	"name": "my-network",
-    	"version": "1.0.0",
-    	"license": "Apache-2.0",
-    	"client": {
-    		"tlsEnable": true,
-    		"adminUser": "admin",
-    		"adminPassword": "adminpw",
-    		"enableAuthentication": false,
-    		"organization": "Org1",
-    		"connection": {
-    			"timeout": {
-    				"peer": {
-    					"endorser": "300"
-    				},
-    				"orderer": "300"
-    			}
-    		}
-    	},
-    	"channels": {
-    		"mychannel": {
-    			"peers": {
-    				"peer0.org1.example.com": {}
-    			},
-    			"connection": {
-    				"timeout": {
-    					"peer": {
-    						"endorser": "6000",
-    						"eventHub": "6000",
-    						"eventReg": "6000"
-    					}
-    				}
-    			}
-    		}
-    	},
-    	"organizations": {
-    		"Org1MSP": {
-    			"mspid": "Org1MSP",
-    			"fullpath": true,
-    			"adminPrivateKey": {
-    				"path": "/fabric-path/my-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/9b5e1e91c5e7ca0c0e83799586e729d027e4c1275f079b6c59584f50c7df1faa_sk"
-    			},
-    			"signedCert": {
-    				"path": "/fabric-path/my-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem"
-    			}
-    		}
-    	},
-    	"peers": {
-    		"peer0.org1.example.com": {
-    			"tlsCACerts": {
-    				"path": "/fabric-path/my-network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
-    			},
-    			"url": "grpcs://localhost:7051",
-    			"eventUrl": "grpcs://localhost:7053",
-    			"grpcOptions": {
-    				"ssl-target-name-override": "peer0.org1.example.com"
-    			}
-    		}
-    	}
+        "name": "my-network",
+        "version": "1.0.0",
+        "license": "Apache-2.0",
+        "client": {
+            "tlsEnable": true,
+            "adminUser": "admin",
+            "adminPassword": "adminpw",
+            "enableAuthentication": false,
+            "organization": "Org1",
+            "connection": {
+                "timeout": {
+                    "peer": {
+                        "endorser": "300"
+                    },
+                    "orderer": "300"
+                }
+            }
+        },
+        "channels": {
+            "mychannel": {
+                "peers": {
+                    "peer0.org1.example.com": {}
+                },
+                "connection": {
+                    "timeout": {
+                        "peer": {
+                            "endorser": "6000",
+                            "eventHub": "6000",
+                            "eventReg": "6000"
+                        }
+                    }
+                }
+            }
+        },
+        "organizations": {
+            "Org1MSP": {
+                "mspid": "Org1MSP",
+                "fullpath": true,
+                "adminPrivateKey": {
+                    "path": "/fabric-path/my-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/9b5e1e91c5e7ca0c0e83799586e729d027e4c1275f079b6c59584f50c7df1faa_sk"
+                },
+                "signedCert": {
+                    "path": "/fabric-path/my-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem"
+                }
+            }
+        },
+        "peers": {
+            "peer0.org1.example.com": {
+                "tlsCACerts": {
+                    "path": "/fabric-path/my-network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+                },
+                "url": "grpcs://localhost:7051",
+                "eventUrl": "grpcs://localhost:7053",
+                "grpcOptions": {
+                    "ssl-target-name-override": "peer0.org1.example.com"
+                }
+            }
+        }
     }
     ```
 
@@ -331,9 +330,9 @@
 
   > **注**：
   >
-  > ​	1.如果中间出错，重新安装时先要删除node_modules文件夹，client里的也需要，`npm run test`过程中出现问题时，如果最后所有测试都通过了可以不用管
+  > ​    1.如果中间出错，重新安装时先要删除node_modules文件夹，client里的也需要，`npm run test`过程中出现问题时，如果最后所有测试都通过了可以不用管
   >
-  > ​	2.如果`npm run build`时出现`The build failed because the process exited too early. This probably means the system ran out of memory or someone called kill -9 on the process`错误，可能是代码的打包比较占内存，多试几次看看，如果不行，停用掉几个服务，清清内存再试
+  > ​    2.如果`npm run build`时出现`The build failed because the process exited too early. This probably means the system ran out of memory or someone called kill -9 on the process`错误，可能是代码的打包比较占内存，多试几次看看，如果不行，停用掉几个服务，清清内存再试
 
 - 运行程序
 
@@ -349,7 +348,7 @@
   > `logs/db` db 日志
   > 这几个文件里面的日志要结合看才能更好的解决问题
   >
-  > 
+  >
   >
   > 启动后显示如下，查看日志，如果没有错误，访问：`http://IP:8080`即可查看区块链网络的信息
 
@@ -360,8 +359,6 @@
   ***** Please check the log [logs/console/console-2019-07-25.log] for any error *****
   ************************************************************************************
   ```
-
-  
 
 ## 参考
 
