@@ -161,8 +161,25 @@
     pip install docker-compose
     ```
 
-  - 查看是否安装成功
+  - 如果安装出现如下错误
 
+    ```bash
+    ImportError: 'module' object has no attribute 'check_specifier'
+        ----------------------------------------
+    ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output
+    ```
+
+    使用如下命令升级`setuptools`，然后在执行安装
+
+    ```bash
+    # 升级 setuptools
+    pip install --upgrade setuptools
+    # 再次执行安装
+    pip install docker-compose
+    ```
+
+  - 查看是否安装成功
+  
     ```bash
     docker-compose version
     ```
@@ -263,3 +280,5 @@
   ./byfn.sh up # 启动网络
   ./byfn.sh down #关闭网络
   ```
+  
+  >注：如果是在`阿里云`的服务器上部署网络，需要在`base/peer-base.yaml`里的`peer-base`服务和`orderer-base`服务都添加一项环境变量`- GODEBUG=netdns=go`，另外在`dockcer-compose-cli.yaml`里的`cli`服务里也添加该变量

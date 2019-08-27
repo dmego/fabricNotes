@@ -130,6 +130,47 @@
   systemctl restart postgresql-9.5.service
   ```
 
+**如果不想在主机上安装 PostgreSQL，可以通过 Docker 容器安装 PostgreSQL**，具体步骤如下：
+
+- 拉取`Docker`镜像：
+
+  ```bash
+  docker pull postgres:9.5
+  ```
+
+- 启动容器，并挂载`db`目录到容器的`home/db`目录下，注意，先执行下载`Hyperledger Explorer`后再来执行这一步：
+
+  ```bash
+  docker run -p 5432:5432 \
+      --restart=always \
+      --name postgres \
+      -e POSTGRES_PASSWORD=postgres \
+      -v /opt/gopath/src/github.com/hyperledger/blockchain-explorer/app/persistence/fabric/postgreSQL/db:/home/db \
+      -d postgres:9.5
+  ```
+
+- 进入容器，进行修改密码和运行`sql`文件的操作：
+
+  ```bash
+  # 进入容器
+  docker exec -it postgres bash
+  
+  # 修改密码操作
+  psql -U postgres # 登录数据库，执行后提示符变为 'postgres=#'
+  ALTER USER postgres WITH PASSWORD 'postgres';  
+  \q  #退出数据库
+  
+  # 进入到 home/db 目录
+  cd /home/db
+  
+  # 执行运行 sql 文件的操作
+  psql -v dbname=fabricexplorer -v user=postgres -v passwd=postgres -f ./explorerpg.sql;
+  psql -v dbname=fabricexplorer -v user=postgres -v passwd=postgres -f ./updatepg.sql;
+  
+  # 运行结束后，退出容器
+  exit
+  ```
+
 ## 5. 安装 JQ
 
 - 安装 JQ 需要的 epel 源
