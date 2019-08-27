@@ -8,3 +8,4 @@
 - [使用 Chaincode 开发模式调试链码](使用Chaincode开发模式调试链码.md)
 - [Fabirc Explorer 搭建文档](Fabirc-Explorer搭建文档.md)
 - [在Fabric 1.4.2 中使用并分析 Raft 共识](在Fabric1.4.2中使用并分析Raft共识.md)
+- [Fabric 中动态加入节点](Fabric中动态加入节点.md)
